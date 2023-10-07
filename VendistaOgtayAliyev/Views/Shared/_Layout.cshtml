@@ -31,17 +31,15 @@
     </header><main class="sidebar-page">
         <aside class="sidebar sidebar-page__sidebar">
             <ul class="sidebar__menu">
-                <li><a href="/lk/events"><img src="~/images/check-circle--grad.svg" alt=""><span>Состояние автоматов</span></a></li>
-                <li><a href="/lk/events"><img src="~/images/tag.svg" alt=""><span>Продажи</span></a></li>
-                <li class="active"><a  asp-action="Index" asp-controller="Events"><img src="~/images/calendar-check.svg" alt=""><span>События</span></a></li>
-                <li><a href="/lk/events"><img src="~/images/chart.svg" alt=""><span>График продаж</span></a></li>
-                <li class="classifier"><a href="/lk/classifier"><img src="~/images/Classifer.png" alt=""><span>Классификаторы</span></a></li>
-                <li class="classifier_down "><a href="#"><span>Автоматы</span></a></li>
-                <li class="classifier_down "><a href="#"><span>Модели автоматов</span></a></li>
-                <li class="classifier_down "><a href="#"><span>Товары</span></a></li>
-                <li class="classifier_down "><a href="#"><span>Товарная матрица</span></a></li>
-                <li class="classifier_down "><a href="#"><span>Пользователи</span></a></li>
-            </ul>
+                <li><a href="/Commands/Index"><img src="~/images/check-circle--grad.svg" alt=""><span>Клиенты</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/tag.svg" alt=""><span>Пользователи</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/calendar-check.svg" alt=""><span>Терминалы</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/chart.svg" alt=""><span>TID Банка</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/chart.svg" alt=""><span>Транзакции</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/chart.svg" alt=""><span>Логи Терминалов</span></a></li>
+                <li><a href="/Commands/Index"><img src="~/images/chart.svg" alt=""><span>Кассы</span></a></li>
+                <li><a asp-action="Index" asp-controller="Commands"><img src="~/images/chart.svg" alt=""><span>Привязать терминалы к клиенту списком</span></a></li>
+               </ul> 
         </aside>
         <div class="sidebar-page__content">
             @RenderBody()
@@ -65,8 +63,10 @@
     <script src="~/js/script.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="~/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: true)
 </body>
-<div></div>
 </html>

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataApiService
 {
-    
 
-    
+
+
 
 
 
@@ -118,7 +118,39 @@ namespace DataApiService
             }
 
         }
+
+
+        public async Task<IEnumerable<CommandType>> GetCommandTypes(string pointName, Dictionary<string, string> getParams = null)
+        {
+            try
+            {
+                string urlService = _options.GetUrlApiService(pointName);
+                var paramString = getParams.ToGetParameters();
+                var url = new Uri($"{urlService}{paramString}");
+                var responseData = await _client.DownloadDataTaskAsync(url);
+                var jsonStr = System.Text.Encoding.UTF8.GetString(responseData);
+
+                // Deserialize to ApiResponse
+                var apiResponse = JsonSerializer.Deserialize<ApiResponse>(jsonStr);
+
+                // Check if items is not null
+                if (apiResponse?.Items != null)
+                {
+                    return apiResponse.Items;
+                }
+
+                // Handle error - potentially log the error message and throw an exception
+                throw new Exception("API request failed: No items returned");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
+
+
 
 
 

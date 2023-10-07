@@ -17,4 +17,8 @@
     <ProjectReference Include="..\DataApiService\DataApiService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Services\" />
+  </ItemGroup>
+
 </Project>

@@ -7,25 +7,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using VendistaOgtayAliyev.Models;
 using DataApiService;
+using System.Data;
 
 namespace VendistaOgtayAliyev.Controllers
 {
-    public class EventsController : BaseController
+    public class CommandsController : BaseController
     {
-        private readonly ILogger<EventsController> _logger;
+        private readonly ILogger<CommandsController> _logger;
         private IDataManager _dataManager;
 
-        public EventsController(ILogger<EventsController> logger, IDataManager dataManager)
+        public CommandsController(ILogger<CommandsController> logger, IDataManager dataManager)
         {
             _logger = logger;
             _dataManager = dataManager;
             _dataManager.Auth("user2", "password2");
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var commandTypes = await _dataManager.GetCommandTypes("commands/types");
+
+            var resultList = commandTypes.ToList();
+            ViewData["CommandTypes"] = resultList;
+
             return View();
         }
+
+
 
         public IActionResult Privacy()
         {

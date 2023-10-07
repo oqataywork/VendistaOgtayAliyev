@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataApiService.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace DataApiService
         /// <param name="getParams">Набор параметров Get запроса</param>
         /// <returns>Набор значений событий API</returns>
         Task<IEnumerable<T>> GetItems<T>(string pointName, Dictionary<string, string> getParams = null);
+        Task<IEnumerable<CommandType>> GetCommandTypes(string pointName, Dictionary<string, string> getParams = null);
 
         /// <summary>
         /// Аутентификация на сервисе
