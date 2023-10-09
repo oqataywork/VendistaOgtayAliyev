@@ -24,10 +24,12 @@
                                 <br />
                             </span>
                         </div>
-                        <select class="home-select">
+                        <select class="home-select" id="myDropdown">
+                            <option value="" selected disabled>Не выбрано</option>
+                            <option value="" selected disabled>Выберите команду</option>
                             @foreach (var commandType in ViewData["CommandTypes"] as List<DataApiService.Models.CommandType>)
                             {
-                                <option value="@commandType.Name">@commandType.Name</option>
+                                <option value="@commandType.Name">&#8226; @commandType.Name</option>
                             }
                         </select>
                     </div>
@@ -46,7 +48,7 @@
                             <button type="button" class="home-button button">Назад</button>
                         </div>
                         <div class="home-container6">
-                            <button type="button" class="home-button1 button">
+                            <button type="button" id="sendButton" class="home-button1 button">
                                 <span>
                                     <span>Отправить</span>
                                     <br />
@@ -98,6 +100,16 @@
                 autoWidth: false,
                 searching: false,
                 scrollX: false
+            });
+        });
+
+        $(document).ready(function () {
+            $("#myDropdown").on("focus", function () {
+                $(this).find("option:selected").removeAttr("disabled").hide();
+            });
+
+            $("#myDropdown").on("blur", function () {
+                $(this).find("option:hidden").show();
             });
         });
     </script>
